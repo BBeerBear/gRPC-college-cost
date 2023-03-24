@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "common/common.proto";
+option java_multiple_files = true;
+option java_package = "com.bbeerbear.grpccollegecost";
+
+message EduCostStatQueryOneRequest {
+  int32 year = 1;
+  string state = 2;
+  common.Type type = 3;
+  common.Length length = 4;
+  common.Expense expense = 5;
+}
+
+message EduCostStatQueryOneResponse{
+  int32 value = 1;
+}
+
+service EduCostStatQueryOne{
+  rpc getEduCostStatQueryOne(EduCostStatQueryOneRequest) returns (EduCostStatQueryOneResponse);
+}

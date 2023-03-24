@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package common;
+
+option java_multiple_files = true;
+option java_package="com.bbeerbear.grpccollegecost.common";
+
+enum Type {
+  PRIVATE = 0;
+  PUBLIC_IN_STATE = 1;
+  PUBLIC_OUT_OF_STATE = 2;
+}
+
+enum Length {
+  _4_YEAR = 0;
+  _2_YEAR = 1;
+}
+
+enum Expense {
+  FEES_TUITION = 0;
+  ROOM_BOARD = 1;
+}
