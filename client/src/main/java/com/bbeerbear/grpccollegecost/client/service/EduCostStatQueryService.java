@@ -22,19 +22,22 @@ public class EduCostStatQueryService {
         Type type = null;
         Length length = null;
         Expense expense = null;
-        switch (typeString){
-            case "Private" -> type = Type.PRIVATE;
-            case "Public In-State" -> type = Type.PUBLIC_IN_STATE;
-            case "Public Out-of-State" -> type = Type.PUBLIC_OUT_OF_STATE;
-        }
-        switch (lengthString) {
-            case "2-year" -> length = Length._2_YEAR;
-            case "4-year" -> length = Length._4_YEAR;
-        }
-        switch (expenseString) {
-            case "Fees/Tuition" -> expense = Expense.FEES_TUITION;
-            case "Room/Board" -> expense = Expense.ROOM_BOARD;
-        }
+        if(typeString != null)
+            switch (typeString){
+                case "Private" -> type = Type.PRIVATE;
+                case "Public In-State" -> type = Type.PUBLIC_IN_STATE;
+                case "Public Out-of-State" -> type = Type.PUBLIC_OUT_OF_STATE;
+            }
+        if(lengthString != null)
+            switch (lengthString) {
+                case "2-year" -> length = Length._2_YEAR;
+                case "4-year" -> length = Length._4_YEAR;
+            }
+        if(expenseString!=null)
+            switch (expenseString) {
+                case "Fees/Tuition" -> expense = Expense.FEES_TUITION;
+                case "Room/Board" -> expense = Expense.ROOM_BOARD;
+            }
         EduCostStatQueryOneRequest eduCostStatQueryOneRequest = EduCostStatQueryOneRequest.newBuilder()
                 .setYear(year).setState(state).setType(type)
                 .setLength(length).setExpense(expense)

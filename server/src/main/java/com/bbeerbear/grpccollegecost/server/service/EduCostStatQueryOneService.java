@@ -27,16 +27,9 @@ public class EduCostStatQueryOneService extends EduCostStatQueryOneGrpc.EduCostS
     public void getEduCostStatQueryOne(EduCostStatQueryOneRequest request, StreamObserver<EduCostStatQueryOneResponse> responseObserver) {
         String type = null,length = null,expense = null;
         switch (request.getType()){
-            case PRIVATE :
-                type = "Private";
-                break;
-            case PUBLIC_IN_STATE:
-                type = "Public In-State";
-                break;
-            case PUBLIC_OUT_OF_STATE:
-                type = "Public Out-Of-State";
-            default:
-                break;
+            case PRIVATE -> type = "Private";
+            case PUBLIC_IN_STATE -> type = "Public In-State";
+            case PUBLIC_OUT_OF_STATE -> type = "Public Out-Of-State";
         }
         switch (request.getLength()) {
             case _2_YEAR -> length = "2-year";
@@ -48,7 +41,7 @@ public class EduCostStatQueryOneService extends EduCostStatQueryOneGrpc.EduCostS
         }
 
         // get result
-        List<EduCostStat> eduCostStatList = this.eduCostStatRepository.findByYearOrStateOrTypeOrLengthOrExpense(
+        List<EduCostStat> eduCostStatList = this.eduCostStatRepository.findByYearAndStateAndTypeAndLengthAndExpense(
                 request.getYear(), request.getState(), type, length, expense
         );
 
