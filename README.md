@@ -6,3 +6,6 @@ Spring Boot + gRPC + REST API + MongoDB + DTO
 - Using Springboot as framework
 - Integrate gRPC with Spring Boot using `grpc-spring-boot-starter`
 - Using REST API For the client side while gRPC to communicate with the server side
+
+## Encounted Bugs and Errors
+- `grpc-spring-boot-starter` not supporting Spring Boot 3
