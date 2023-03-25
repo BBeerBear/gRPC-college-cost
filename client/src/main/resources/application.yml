@@ -1,0 +1,5 @@
+grpc:
+  client:
+    edu-cost-stat-query-service:
+      address: static://localhost:6565
+      negotiationType: plaintext
