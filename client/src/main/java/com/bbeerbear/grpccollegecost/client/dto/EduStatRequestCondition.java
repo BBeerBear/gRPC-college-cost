@@ -2,6 +2,8 @@ package com.bbeerbear.grpccollegecost.client.dto;
 
 import lombok.Data;
 
+import javax.annotation.Nullable;
+
 @Data
 public class EduStatRequestCondition {
     private int year;

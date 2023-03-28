@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "common/common.proto";
+option java_multiple_files=true;
+option java_package="com.bbeerbear.grpcclooegecost.server";
+
+enum PAST_YEARS {
+  ONE_YEAR = 0;
+  THREE_YEARS = 1;
+  FIVE_YEARS = 2;
+}
+
+message EduCostStatQueryFourRequest {
+  PAST_YEARS past_year = 1;
+  common.Type type = 2;
+  common.Length length = 3;
+}
+
+message EduCostStatQueryFourState {
+  string state = 1;
+  double growth_rate = 2;
+}
+
+message EduCostStatQueryFourResponse {
+  repeated EduCostStatQueryFourState eduCostStatQueryFourState = 1;
+}
+
+service EduCostStatQueryFourService {
+  rpc getEduCostQueryFour(EduCostStatQueryFourRequest) returns (EduCostStatQueryFourResponse);
+}
