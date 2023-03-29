@@ -16,14 +16,17 @@ public class EduCostStatQueryServiceTest {
     }
     @Test
     public void eduStatQueryTwo() {
-        eduCostStatQueryService.eduStatQueryTwo(2013,null,null);
+        eduCostStatQueryService.eduStatQueryTwo(2013,"Private","4-year");
     }
     @Test
     public void eduStatQueryThree(){
-        eduCostStatQueryService.eduStatQueryThree(2013,null,null);
+        eduCostStatQueryService.eduStatQueryThree(2013,"Private","4-year");
     }
     @Test
     public void eduStatQueryFour(){
-        eduCostStatQueryService.eduStatQueryFour();
+        eduCostStatQueryService.eduStatQueryFour(1,"Private","4-year");
+    }
+    @Test void eduStatQueryFive(){
+        eduCostStatQueryService.eduStatQueryFive(2013, "Private", "4-year");
     }
 }

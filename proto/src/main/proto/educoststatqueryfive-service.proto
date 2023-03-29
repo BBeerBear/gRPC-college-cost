@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "common/common.proto";
+option java_multiple_files=true;
+option java_package="com.bbeerbear.grpcclooegecost.server";
+
+
+
+message EduCostStatQueryFiveRequest {
+  int32 year = 1;
+  common.Type type = 2;
+  common.Length length = 3;
+}
+
+message EduCostStatQueryFiveRegion{
+  string region = 1;
+  double averageOverallExpense = 2;
+}
+
+message EduCostStatQueryFiveResponse {
+  repeated EduCostStatQueryFiveRegion eduCostStatQueryFiveRegion = 1;
+}
+
+service EduCostStatQueryFiveService {
+  rpc getEduCostQueryFive(EduCostStatQueryFiveRequest) returns (EduCostStatQueryFiveResponse);
+}

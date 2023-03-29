@@ -1,9 +1,6 @@
 package com.bbeerbear.grpccollegecost.client.controller;
 
-import com.bbeerbear.grpccollegecost.client.dto.EduStatQueryResultFour;
-import com.bbeerbear.grpccollegecost.client.dto.EduStatQueryResultOne;
-import com.bbeerbear.grpccollegecost.client.dto.EduStatQueryResultTwo;
-import com.bbeerbear.grpccollegecost.client.dto.EduStatRequestCondition;
+import com.bbeerbear.grpccollegecost.client.dto.*;
 import com.bbeerbear.grpccollegecost.client.service.EduCostStatQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +28,9 @@ public class EduStatQueryController {
     @PostMapping("/edu-cost-stat-query-four/pastYears/{pastYears}")
     public List<EduStatQueryResultFour> eduCostStatQueryFour(@PathVariable int pastYears, @RequestBody EduStatRequestCondition eduStatRequestCondition){
         return this.eduCostStatQueryService.eduStatQueryFour(pastYears, eduStatRequestCondition.getType(), eduStatRequestCondition.getLength());
+    }
+    @PostMapping("/edu-cost-stat-query-five")
+    public List<EduStatQueryResultFive> eduCostStatQueryFive(@RequestBody EduStatRequestCondition eduStatRequestCondition){
+        return this.eduCostStatQueryService.eduStatQueryFive(eduStatRequestCondition.getYear(), eduStatRequestCondition.getType(), eduStatRequestCondition.getLength());
     }
 }
