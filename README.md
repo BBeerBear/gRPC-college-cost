@@ -1,4 +1,4 @@
-# Analyzing Cost of Undergrad College in Different Ways
+# Analyzing Cost of Undergrad College in US
 [DataSet](https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state/versions/10?resource=download)
 ## Tech
 Spring Boot + gRPC + REST API + MongoDB + DTO
