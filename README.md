@@ -1,4 +1,4 @@
-# Query Avg Cost of Undergrad College by State in 4 Ways
+# Analyzing Cost of Undergrad College in Different Ways
 [DataSet](https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state/versions/10?resource=download)
 ## Tech
 Spring Boot + gRPC + REST API + MongoDB + DTO
