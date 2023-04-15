@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "common/common.proto";
 option java_multiple_files = true;
-option java_package = "com.bbeerbear.grpccollegecost.server";
+option java_package = "com.bbeerbear.grpccollegecost.query";
 
 message EduCostStatQueryTwoRequest {
   int32 year = 1;

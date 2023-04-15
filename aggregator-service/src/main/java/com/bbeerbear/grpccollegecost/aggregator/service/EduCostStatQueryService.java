@@ -1,12 +1,12 @@
 package com.bbeerbear.grpccollegecost.aggregator.service;
 
-import com.bbeerbear.grpcclooegecost.server.*;
+import com.bbeerbear.grpccollegecost.query.*;
 import com.bbeerbear.grpccollegecost.aggregator.dto.EduStatQueryResultFive;
 import com.bbeerbear.grpccollegecost.aggregator.dto.EduStatQueryResultFour;
 import com.bbeerbear.grpccollegecost.aggregator.dto.EduStatQueryResultOne;
 import com.bbeerbear.grpccollegecost.aggregator.dto.EduStatQueryResultTwo;
 import com.bbeerbear.grpccollegecost.aggregator.util.EnumTransferUtil;
-import com.bbeerbear.grpccollegecost.educoststatquery.*;
+import com.bbeerbear.grpccollegecost.query.*;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 

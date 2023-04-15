@@ -1,9 +1,10 @@
 package com.bbeerbear.grpccollegecost.aggregator.util;
 
-import com.bbeerbear.grpcclooegecost.server.PAST_YEARS;
+
 import com.bbeerbear.grpccollegecost.common.Expense;
 import com.bbeerbear.grpccollegecost.common.Length;
 import com.bbeerbear.grpccollegecost.common.Type;
+import com.bbeerbear.grpccollegecost.query.PAST_YEARS;
 
 public class EnumTransferUtil {
     public static Type typeTransfer(String typeString){
