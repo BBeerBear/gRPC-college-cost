@@ -23,8 +23,7 @@ public class EduCostStatQueryService {
     @GrpcClient("edu-cost-stat-query-service")
     private EduCostStatQueryThreeGrpc.EduCostStatQueryThreeBlockingStub eduCostStatQueryThreeBlockingStub;
     @GrpcClient("edu-cost-stat-query-service")
-    private EduCostStatQueryFourServiceGrpc.EduCostStatQueryFourServiceBlockingStub
-            eduCostStatQueryFourServiceBlockingStub;
+    private EduCostStatQueryFourServiceGrpc.EduCostStatQueryFourServiceBlockingStub eduCostStatQueryFourServiceBlockingStub;
     @GrpcClient("edu-cost-stat-query-service")
     private EduCostStatQueryFiveServiceGrpc.EduCostStatQueryFiveServiceBlockingStub eduCostStatQueryFiveServiceBlockingStub;
     public List<EduStatQueryResultOne> eduStatQueryOne(int year, String state, String typeString,
@@ -41,8 +40,16 @@ public class EduCostStatQueryService {
 
         return eduCostStatQueryOneResponse.getEduCostStatQueryOneValueList()
                 .stream()
-                .map(eduCostStatQueryOneValue -> new EduStatQueryResultOne(eduCostStatQueryOneValue.getId(),
-                        eduCostStatQueryOneValue.getValue()))
+                .map(eduCostStatQueryOneValue ->
+                        new EduStatQueryResultOne(
+                            eduCostStatQueryOneValue.getId(),
+                            eduCostStatQueryOneValue.getValue(),
+                            year,
+                            state,
+                            typeString,
+                            lengthString,
+                            expenseString
+                        ))
                 .collect(Collectors.toList());
     }
 
@@ -56,8 +63,12 @@ public class EduCostStatQueryService {
                 .getEduCostStatQueryTwo(request);
         return eduCostStatQueryTwoResponse.getEduCostStatQueryTwoStateList()
                 .stream()
-                .map(eduCostQueryTwoState -> new EduStatQueryResultTwo(eduCostQueryTwoState.getState(),
-                        eduCostQueryTwoState.getOverallExpense()))
+                .map(eduCostQueryTwoState -> new EduStatQueryResultTwo(
+                        eduCostQueryTwoState.getState(),
+                        eduCostQueryTwoState.getOverallExpense(),
+                        year,
+                        type,
+                        length))
                 .collect(Collectors.toList());
     }
     public List<EduStatQueryResultTwo> eduStatQueryThree(int year, String type, String length){
@@ -71,8 +82,12 @@ public class EduCostStatQueryService {
 //        System.out.println(eduCostStatQueryThreeResponse.getEduCostStatQueryThreeStateList());
         return eduCostStatQueryThreeResponse.getEduCostStatQueryThreeStateList()
                 .stream()
-                .map(eduCostQueryTwoState -> new EduStatQueryResultTwo(eduCostQueryTwoState.getState(),
-                        eduCostQueryTwoState.getOverallExpense()))
+                .map(eduCostQueryThreeState -> new EduStatQueryResultTwo(
+                        eduCostQueryThreeState.getState(),
+                        eduCostQueryThreeState.getOverallExpense(),
+                        year,
+                        type,
+                        length))
                 .collect(Collectors.toList());
     }
 
@@ -88,8 +103,12 @@ public class EduCostStatQueryService {
 //        System.out.println(eduCostStatQueryFourResponse.getEduCostStatQueryFourStateList());
         return eduCostStatQueryFourResponse.getEduCostStatQueryFourStateList()
                 .stream()
-                .map(eduCostStatQueryFourState -> new EduStatQueryResultFour(eduCostStatQueryFourState.getState(),
-                        eduCostStatQueryFourState.getGrowthRate()))
+                .map(eduCostStatQueryFourState -> new EduStatQueryResultFour(
+                        eduCostStatQueryFourState.getState(),
+                        eduCostStatQueryFourState.getGrowthRate(),
+                        pastYears,
+                        type,
+                        length))
                 .collect(Collectors.toList());
     }
 
@@ -104,9 +123,12 @@ public class EduCostStatQueryService {
 //        System.out.println(eduCostStatQueryFiveResponse.getEduCostStatQueryFiveRegionList());
         return eduCostStatQueryFiveResponse.getEduCostStatQueryFiveRegionList()
                 .stream()
-                .map(eduCostStatQueryFiveRegion -> new EduStatQueryResultFive(eduCostStatQueryFiveRegion.getRegion(),
-                        eduCostStatQueryFiveRegion.getAverageOverallExpense()))
+                .map(eduCostStatQueryFiveRegion -> new EduStatQueryResultFive(
+                        eduCostStatQueryFiveRegion.getRegion(),
+                        eduCostStatQueryFiveRegion.getAverageOverallExpense(),
+                        year,
+                        type,
+                        length))
                 .collect(Collectors.toList());
     }
-
 }

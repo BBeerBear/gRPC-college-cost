@@ -44,24 +44,21 @@ public class EduCostStatQueryOneService extends EduCostStatQueryOneGrpc.EduCostS
                 )
         );
 
-        // send response
-        List<EduCostStatQueryOneValue> eduCostStatQueryOneValues = eduCostStatList
+        // save to mongodb
+        this.eduCostStatQueryOneRepository.deleteAll();
+        eduCostStatList.forEach(eduCostStat -> this.eduCostStatQueryOneRepository.save(
+                new EduCostStatQueryOne(eduCostStat.getId(),eduCostStat.getValue())
+        ));
+        List<EduCostStatQueryOneValue> eduCostStatQueryOneValues = this.eduCostStatQueryOneRepository.findAll()
                 .stream()
                 .map(eduCostStatItem -> EduCostStatQueryOneValue.newBuilder()
                         .setValue(eduCostStatItem.getValue())
                         .setId(eduCostStatItem.getId())
                         .build())
                 .collect(Collectors.toList());
-
         responseObserver.onNext(EduCostStatQueryOneResponse.newBuilder()
                 .addAllEduCostStatQueryOneValue(eduCostStatQueryOneValues)
                 .build());
         responseObserver.onCompleted();
-
-        // save to mongodb
-        this.eduCostStatQueryOneRepository.deleteAll();
-        eduCostStatList.forEach(eduCostStat -> this.eduCostStatQueryOneRepository.save(
-                new EduCostStatQueryOne(eduCostStat.getId(),eduCostStat.getValue())
-        ));
     }
 }

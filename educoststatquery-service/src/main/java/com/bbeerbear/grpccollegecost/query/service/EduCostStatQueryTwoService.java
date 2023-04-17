@@ -51,8 +51,13 @@ public class EduCostStatQueryTwoService extends EduCostStatQueryTwoGrpc.EduCostS
         List<EduCostStatQueryTwo> top5States = result.getMappedResults();
 //        System.out.println(top5States);
 
+
+        // save to mongodb
+        eduCostStatQueryTwoRepository.deleteAll();
+        eduCostStatQueryTwoRepository.saveAll(top5States);
+
         // send back to client
-        List<EduCostStatQueryTwoState> eduCostStatQueryTwoStates = top5States
+        List<EduCostStatQueryTwoState> eduCostStatQueryTwoStates = this.eduCostStatQueryTwoRepository.findAll()
                 .stream()
                 .map(eduCostStatItem -> EduCostStatQueryTwoState.newBuilder()
                         .setState(eduCostStatItem.getState())
@@ -64,9 +69,5 @@ public class EduCostStatQueryTwoService extends EduCostStatQueryTwoGrpc.EduCostS
                 .addAllEduCostStatQueryTwoState(eduCostStatQueryTwoStates)
                 .build());
         responseObserver.onCompleted();
-
-        // save to mongodb
-        eduCostStatQueryTwoRepository.deleteAll();
-        eduCostStatQueryTwoRepository.saveAll(top5States);
     }
 }

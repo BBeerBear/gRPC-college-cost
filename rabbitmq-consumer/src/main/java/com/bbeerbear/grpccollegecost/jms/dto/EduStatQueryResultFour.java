@@ -1,4 +1,4 @@
-package com.bbeerbear.grpccollegecost.aggregator.dto;
+package com.bbeerbear.grpccollegecost.jms.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,10 @@ import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
-public class EduStatQueryResultTwo implements Serializable {
+public class EduStatQueryResultFour implements Serializable {
     private String state;
-    private int overallExpense;
-    private int year;
+    private double growthRate;
+    private int pastYears;
     private String type;
     private String length;
 }

@@ -47,5 +47,4 @@ public class EduCostStatService {
         }
         this.eduCostStatRepository.saveAll(eduCostStatList);
     }
-
 }

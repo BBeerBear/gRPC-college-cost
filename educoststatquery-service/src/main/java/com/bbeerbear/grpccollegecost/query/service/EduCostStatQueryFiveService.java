@@ -78,8 +78,12 @@ public class EduCostStatQueryFiveService extends EduCostStatQueryFiveServiceGrpc
         List<EduCostStatQueryFive> avgResults = eduCostStat.getMappedResults();
 //        System.out.println(avgResults);
 
+        // Save to MongoDB
+        eduCostStatQueryFiveRepository.deleteAll();
+        eduCostStatQueryFiveRepository.saveAll(avgResults);
+
         // Return to Client
-        List<EduCostStatQueryFiveRegion> eduCostStatQueryFiveRegions = avgResults
+        List<EduCostStatQueryFiveRegion> eduCostStatQueryFiveRegions = this.eduCostStatQueryFiveRepository.findAll()
                 .stream()
                 .map(eduCostStatItem -> EduCostStatQueryFiveRegion.newBuilder()
                         .setRegion(eduCostStatItem.getRegion())
@@ -90,9 +94,5 @@ public class EduCostStatQueryFiveService extends EduCostStatQueryFiveServiceGrpc
                 .addAllEduCostStatQueryFiveRegion(eduCostStatQueryFiveRegions)
                 .build());
         responseObserver.onCompleted();
-
-        // Save to MongoDB
-        eduCostStatQueryFiveRepository.deleteAll();
-        eduCostStatQueryFiveRepository.saveAll(avgResults);
     }
 }

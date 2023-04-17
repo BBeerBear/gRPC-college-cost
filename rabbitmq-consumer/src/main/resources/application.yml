@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+
+  data:
+    mongodb:
+      uri: mongodb+srv://bear123:N7EcN4eT3x0446z5@cluster0.dmflcxf.mongodb.net/edu_cost_stat_db
+      database: edu_cost_stat_db

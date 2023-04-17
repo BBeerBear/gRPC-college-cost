@@ -9,13 +9,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>aggregator-service</artifactId>
+    <artifactId>rabbitmq-consumer</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -24,21 +25,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.devh</groupId>
-            <artifactId>grpc-client-spring-boot-starter</artifactId>
-            <version>2.13.1.RELEASE</version>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <dependency>
             <groupId>com.bbeerbear</groupId>
-            <artifactId>proto</artifactId>
+            <artifactId>aggregator-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

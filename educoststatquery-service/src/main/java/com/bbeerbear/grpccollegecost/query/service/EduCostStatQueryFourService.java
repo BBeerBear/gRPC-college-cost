@@ -80,8 +80,12 @@ public class EduCostStatQueryFourService extends EduCostStatQueryFourServiceGrpc
         List<EduCostStatQueryFour> top5States = results.getMappedResults();
 //        System.out.println(mappedResults);
 
+        // Save to MongoDB
+        this.eduCostStatQueryFourRepository.deleteAll();
+        this.eduCostStatQueryFourRepository.saveAll(top5States);
+
         // Return to client
-        List<EduCostStatQueryFourState> eduCostStatQueryFourStates = top5States
+        List<EduCostStatQueryFourState> eduCostStatQueryFourStates = this.eduCostStatQueryFourRepository.findAll()
                 .stream()
                 .map(eduCostStatItem -> EduCostStatQueryFourState.newBuilder()
                         .setState(eduCostStatItem.getState())
@@ -92,9 +96,5 @@ public class EduCostStatQueryFourService extends EduCostStatQueryFourServiceGrpc
                 .addAllEduCostStatQueryFourState(eduCostStatQueryFourStates)
                 .build());
         responseObserver.onCompleted();
-
-        // Save to MongoDB
-        this.eduCostStatQueryFourRepository.deleteAll();
-        this.eduCostStatQueryFourRepository.saveAll(top5States);
     }
 }

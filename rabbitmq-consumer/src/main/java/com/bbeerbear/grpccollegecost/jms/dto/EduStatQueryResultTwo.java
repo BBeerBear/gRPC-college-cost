@@ -1,4 +1,4 @@
-package com.bbeerbear.grpccollegecost.aggregator.dto;
+package com.bbeerbear.grpccollegecost.jms.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

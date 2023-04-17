@@ -1,7 +1,11 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
 grpc:
   client:
     edu-cost-stat-query-service:
       address: static://localhost:6565
       negotiationType: plaintext
 server:
-  port : 8080
+  port : 8082
