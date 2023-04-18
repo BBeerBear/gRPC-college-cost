@@ -1,13 +1,13 @@
 spring:
   rabbitmq:
     host: localhost
-    port: 6565
+    port: 5672
     password: guest
     username: guest
 grpc:
   client:
     edu-cost-stat-query-service:
-      address: static://localhost:7575
+      address: static://localhost:6565
       negotiationType: plaintext
 server:
   port : 8080
