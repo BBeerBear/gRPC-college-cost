@@ -7,7 +7,7 @@ spring:
 grpc:
   client:
     edu-cost-stat-query-service:
-      address: static://localhost:6565
+      address: static://localhost:7575
       negotiationType: plaintext
 server:
   port : 8080
