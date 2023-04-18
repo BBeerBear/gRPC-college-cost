@@ -10,4 +10,4 @@ grpc:
       address: static://localhost:6565
       negotiationType: plaintext
 server:
-  port : 8082
+  port : 8080
